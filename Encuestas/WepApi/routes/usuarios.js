@@ -19,7 +19,7 @@ router.post('/login', function(req, res, next) {
     
     mongoCliente.connect(url, function(err, client){
         if(err){
-            respuesta.mensaje = "Error al buscar información." +err;
+            respuesta.mensaje = "Error al conectar a la BD. " +err;
             res.json(respuesta);
             return;
         }
@@ -54,7 +54,7 @@ router.post('/', function(req, res, next) {
     
     mongoCliente.connect(url, function(err, client){
         if(err){
-            respuesta.mensaje = "Error al buscar información." +err;
+            respuesta.mensaje = "Error al conectar a la DB. " +err;
             res.json(respuesta);
             return;
         }
@@ -112,7 +112,7 @@ router.put('/', function(req, res, next) {
 
     mongoCliente.connect(url, function(err, client){
         if(err){
-            respuesta.mensaje = "Error al buscar información." +err;
+            respuesta.mensaje = "Error al conectar a la BD. " +err;
             res.json(respuesta);
             return;
         }
