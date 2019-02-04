@@ -14,23 +14,31 @@ respuesta.mensaje = "No data found.";
 respuesta.data = null;
 
 router.get('/consultar/todo', function(req, res, next) {
+    respuesta.data = null;
     mongoCliente.connect(url, function(err, client){
         assert.equal(err, null);
 
         const db = client.db("encuestas");
         var query ={};
         db.collection('encuesta').find(query).toArray(function(err, result){
-            assert.equal(err, null);
+            //assert.equal(err, null);
+            if(err){
+                respuesta.estatus = "fail";
+                respuesta.mensaje = err;
+                res.json(respuesta);
+            }
             respuesta.estatus="ok";
             respuesta.mensaje="Datos cargados con éxito";
             respuesta.data = result;
             res.json(respuesta);
             client.close();
         });
+
     });
 });
 
 router.get('/consultar/:id', function(req, res, next) {
+    respuesta.data = null;
     var id = req.params.id;
     mongoCliente.connect(url, function(err, client){
         assert.equal(err, null);
@@ -40,7 +48,12 @@ router.get('/consultar/:id', function(req, res, next) {
         var oId = new ObjectID(id);
         var query = {"_id": oId};
         db.collection('encuesta').findOne(query, function(err, result){
-            assert.equal(err, null);
+            //assert.equal(err, null);
+            if(err){
+                respuesta.estatus = "fail";
+                respuesta.mensaje = err;
+                res.json(respuesta);
+            }
             respuesta.estatus="ok";
             respuesta.mensaje="Datos cargados con éxito";
             respuesta.data = result;
@@ -51,7 +64,7 @@ router.get('/consultar/:id', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-
+    respuesta.data = null;
     var encuesta = req.body;
     
     mongoCliente.connect(url, function(err, client){
@@ -82,7 +95,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.post('/respuestas', function(req, res, next) {
-
+    respuesta.data = null;
     var encuesta = req.body;
     mongoCliente.connect(url, function(err, client){
         if(err){
@@ -112,6 +125,7 @@ router.post('/respuestas', function(req, res, next) {
 });
 
 router.get('/consultar/respuestas/:id', function(req, res, next) {
+    respuesta.data = null;
     var id = req.params.id;
     mongoCliente.connect(url, function(err, client){
         assert.equal(err, null);

@@ -13,7 +13,7 @@ respuesta.mensaje = "No data found.";
 respuesta.data = null;
 
 router.post('/login', function(req, res, next) {
-
+    respuesta.data = null;
     var nombre = req.body.username;
     var pass = req.body.password;
     
@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-
+    respuesta.data = null;
     var usuario = req.body.username;
     var pass = req.body.password;
     var nombre = req.body.nombre;
@@ -99,7 +99,7 @@ router.post('/', function(req, res, next) {
 
 
 router.put('/', function(req, res, next) {
-
+    respuesta.data = null;
     //var usuario = req.body.username;
     var pass = req.body.password;
     var nombre = req.body.nombre;
