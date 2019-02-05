@@ -1,0 +1,13 @@
+<div id="content-main-user" class="flex-column">
+  <h1>Bienvenido</h1>
+  <div class="flex-column">
+    <p #Cargando>Cargando datos</p>
+    <div id="content-encuestas">
+      <div class="item-encuesta flex-row" *ngFor="let encuesta of encuestasModel" (click)="elegirEncuesta(encuesta.encuesta, encuesta._id)">{{encuesta.encuesta}}</div>
+    </div>
+    <div class="flex-row item-button">
+      <button class="button-save" (click)="goToContestar()">Contestar</button>
+      <button class="button-save" (click)="goToRespuestas()">Ver respuestas</button>
+    </div>
+  </div>
+</div>

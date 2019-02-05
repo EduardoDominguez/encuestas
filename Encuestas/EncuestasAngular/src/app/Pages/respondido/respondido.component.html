@@ -1,0 +1,11 @@
+<div id="content-main-user" class="flex-column">
+    <h1>Contestar</h1>
+    <div class="flex-column">
+      <div id="content-encuestas">
+        <div class="item-respuestas" *ngFor="let item of respuestasModel">
+          <p>{{item.pregunta}}</p>
+          <p>{{item.respuesta}}<p>
+        </div>
+      </div>
+    </div>
+  </div>

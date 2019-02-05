@@ -1,0 +1,37 @@
+<div id="content-page-main" class="flex-row">
+  <div id="lateral-menu" class="flex-column">
+    <div class="item-menu flex-row" (click)="goToEncuesta()">
+      <p>Alta encuesta</p>
+    </div>
+    <div class="item-menu flex-row" (click)="goToPreguntas()">
+      <p>Alta preguntas</p>
+    </div>
+    <div class="item-menu flex-row" (click)="goToRespuestas()">
+      <p>Alta respuestas</p>
+    </div>
+    <div class="item-menu flex-row" (click)="sendEncuesta()"><p>Enviar encuesta</p></div>
+    <div class="item-menu flex-row" (click)="goToUser()"><p>Contestar encuesta</p></div>
+  </div>
+  <div id="content-page" class="flex-column">
+    <h1>Crea preguntas</h1>
+    <select [(ngModel)]="encuesta">
+        <option value="0">Elige una encuesta</option>
+        <option [value]="encuesta.encuesta" *ngFor="let encuesta of encuestasModel">{{encuesta.encuesta}}</option>
+    </select>
+    <div class="flex-row">
+        <button class="add-plus" (click)="removeQuestion()">-</button>
+        <button class="add-plus" (click)="addQuestion()">+</button>
+    </div>
+    <div class="flex-row" *ngFor="let item of modelQuestions">
+      <input [(ngModel)]="item.pregunta" type="text" placeholder="Pregunta"/>
+      <input [(ngModel)]="item.numeroRespuestas" type="number" placeholder="Número de respuestas"/>
+      <select [(ngModel)]="item.tipoPregunta">
+        <option value="0">Elige un tipo de pregunta</option>
+        <option value="1">Abierta</option>
+        <option value="2">Cerrada con varias opciones</option>
+        <option value="3">Cerrada con una opción</option>
+      </select>
+    </div>
+    <button class="button-save" (click)="saveEncuesta()">Guardar</button>
+  </div>
+</div>

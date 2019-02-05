@@ -1,0 +1,30 @@
+<div id="content-main-user" class="flex-column">
+  <h1>Contestar</h1>
+  <div class="flex-column">
+    <div id="content-encuestas">
+      <div *ngFor="let pregunta of preguntasModel">
+        <div class="item-respuestas" *ngIf="pregunta.tipoPregunta == 1">
+          <p>{{pregunta.pregunta}}</p>
+          <input type="text" [(ngModel)]="pregunta.respuesta"/>
+        </div>
+        <div class="item-respuestas" *ngIf="pregunta.tipoPregunta == 2">
+          <p>{{pregunta.pregunta}}</p>
+          <div class="flex-row item-resp">
+            <div class="flex-row" *ngFor="let respuesta of pregunta.respuestas">
+              <input type="radio" name="pregunta.pregunta"><label>{{respuesta.respuesta}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="item-respuestas" *ngIf="pregunta.tipoPregunta == 3">
+          <p>{{pregunta.pregunta}}</p>
+          <div class="flex-row item-resp">
+            <div class="flex-row" *ngFor="let respuesta of pregunta.respuestas">
+              <input type="checkbox"><label>{{respuesta.respuesta}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="button-save" (click)="contestar()">Contestar</button>
+  </div>
+</div>

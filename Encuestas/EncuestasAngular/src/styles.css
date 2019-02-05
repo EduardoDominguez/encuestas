@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.flex-column{
+    display: flex;
+    flex-direction:column;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction:row;
+}
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="text"], input[type="number"], input[type="password"]{
+    width: calc(100% - 10px);
+    height: 30px;
+    border-radius: 5px;
+    border: 2px #DDD solid;
+    margin: 15px 0;
+    padding-left: 10px;
+}
+
+.button-save{
+    width: 250px;
+    height: 40px;
+    border: none;
+    background: rgb(17, 159, 184);
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    
+}
+
+select{
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 2px #DDD solid;
+    margin: 15px 0;
+}
+
+textarea{
+    width: calc(100% - 10px);
+    height: 130px;
+    padding-top: 10px;
+    padding-left: 10px;
+    resize: none;
+    border-radius: 5px;
+    border: 2px #DDD solid;
+}
